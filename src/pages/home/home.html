@@ -1,0 +1,106 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-title center text-center>
+      NoteIt
+    </ion-title>
+  </ion-navbar>
+</ion-header> 
+
+<ion-content padding>
+    <ion-searchbar 
+    placeholder="Search Note-It"
+    showCancelButton = "true"
+    animated="true"
+    [(ngModel)]="mySearchInput"
+    [showCancelButton]="true"
+    (ionInput)="onInputSearch($event)"
+    (ionCancel)="onCancelSearch()"
+    (ionClear)= "onClearSearch()"
+  ></ion-searchbar><br>
+  <h2>{{youhave}} {{notesCount}} {{notesString}}</h2><hr>
+  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <!--<ion-list *ngFor="let note of notes; let i = index">
+    <ion-item-sliding>
+      <ion-item (click)="viewNote(note, i)">
+        <ion-thumbnail  item-start>
+          <img style="border-radius:8px" src="assets/imgs/note-it Launch icons96X96.png">
+        </ion-thumbnail >
+        <h1>{{note.noteTitle}}</h1>
+        <p>{{note.noteText}}</p>
+        <h6>{{note.noteDate}}</h6>
+        <h6>{{note.noteTime}}</h6>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon color="light" name="star"></ion-icon>
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon color="light" name="ios-albums"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button (click)="deleteNote(i)" ion-button color="danger">
+          <ion-icon color="light" name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>-->
+  
+  <ion-card *ngFor="let note of notes ; let i = index">
+      <ion-item>
+        <h1>{{note.noteTitle | titlecase}}</h1>
+        <p>{{note.noteDate}}</p>
+      </ion-item>
+      <ion-item (click)="viewNote(note, i)">
+        <img src="assets/imgs/note-it landscape.png">
+    
+        <ion-card-content>
+          <p>{{note.noteText}}</p>
+        </ion-card-content>
+      </ion-item>
+    
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear  small (click)="favoriteIt(i)" >
+            <ion-icon [name]="favoriteicon"></ion-icon>
+            <div>Fav</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small  (click)="deleteNote(i)">
+            <ion-icon name="trash"></ion-icon>
+            <div>Delete</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+            <button ion-button icon-left clear small  (click)="shareNote(i)">
+                <ion-icon name="share"></ion-icon>
+                <div>Share</div>
+              </button>
+        </ion-col>
+      </ion-row>
+    
+    </ion-card>
+
+
+   <!--<ion-list>
+     <ion-item *ngFor="let note of notes">
+        <ion-icon name="book" item-start></ion-icon>
+        <h4>{{note.noteTitle}}</h4>
+        <p>{{note.noteText}}</p>
+     </ion-item>
+   </ion-list>-->
+   <ion-fab  right bottom>
+    <button ion-fab color="primary"><ion-icon  name="menu"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="primary" (click)="onAddNote()"><ion-icon name="md-add"></ion-icon></button>
+      <button  ion-fab color="primary" (click)="openBible()"><ion-icon name="ios-book"></ion-icon></button>
+      <button ion-fab color="primary"><ion-icon name="star"></ion-icon></button>
+      <button ion-fab color="primary" (click)="myAccount()"><ion-icon name="contact"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

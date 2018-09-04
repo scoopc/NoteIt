@@ -1,0 +1,47 @@
+
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-row>
+      <ion-col col-2>
+        <h5><a (click)="onAddNote()" href="#">Done</a></h5>
+      </ion-col>
+      <ion-col col-8>
+        <h2 center text-center>{{noteTitle}}</h2>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear>
+          <ion-icon name="share"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h2>
+        <input 
+        [(ngModel)]="noteTitle" 
+        type="text"  
+        id="noteTitle" 
+        placeholder="Title" 
+        required
+        />
+    </h2>
+    <div 
+    #textarea
+    contenteditable="true" 
+    class="textarea"
+    ></div>
+
+    <ion-fab [hidden]="willHide" right bottom>
+      <button ion-fab color="dark" (click)="openBible()"><ion-icon name="ios-book"></ion-icon></button>
+    </ion-fab>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <text-editor></text-editor>
+  </ion-toolbar>
+</ion-footer>
+ 
