@@ -22,6 +22,10 @@ import { BiblePopoverPage } from '../pages/bible-popover/bible-popover';
 import { MyAccountPage } from '../pages/my-account/my-account';
 import { TextEditorComponent } from '../components/text-editor/text-editor';
 import { LoginPage } from '../pages/login/login';
+import { AuthProvider } from '../providers/auth/auth';
+import { EventProvider } from '../providers/event/event';
+import { SignupPage } from '../pages/signup/signup';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 
 
 @NgModule({
@@ -38,6 +42,8 @@ import { LoginPage } from '../pages/login/login';
     BiblePopoverPage,
     MyAccountPage,
     LoginPage,
+    SignupPage,
+    ResetPasswordPage,
     TextEditorComponent
     
   ],
@@ -63,6 +69,8 @@ import { LoginPage } from '../pages/login/login';
     BiblePopoverPage,
     MyAccountPage,
     LoginPage,
+    SignupPage,
+    ResetPasswordPage,
     TextEditorComponent
    
   ],
@@ -73,6 +81,8 @@ import { LoginPage } from '../pages/login/login';
     BibleServices,
     NotesDataService,
     OptGeneratorProvider,
+    AuthProvider,
+    EventProvider,
      
     
     
