@@ -22,7 +22,7 @@ export class AuthProvider {
     .then(newUser => {
     firebase
     .database()
-    .ref(`/userProfile/${newUser.uid}/email`)
+    .ref(`/userProfile/${newUser.user.uid}/email`)
     .set(email);
     })
     .catch(error => {
